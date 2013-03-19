@@ -1,0 +1,7 @@
+<div id="sidebar_block">
+  <strong>Останні коментарі :</strong><br />
+<% comments.each do |c| %>
+<%= link_to c.title, category_article_path(c.article.category , c.article.id ) %> -> <span class="category-c"><%= link_to c.article.category.title , category_path(c.article.category) %> </span><span style="font-size:10px; color: grey;"> <%= c.created_at.strftime("%d.%m.%Y") %></span>
+<hr />
+<% end %>
+</div>

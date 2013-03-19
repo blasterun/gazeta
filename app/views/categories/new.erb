@@ -1,0 +1,18 @@
+<%= form_for @category do |f| %>
+<%=raw errors_for @category %>
+  <p>
+    <%= f.label "Назва" %><br>
+    <%= f.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= f.label "Опис" %><br>
+    <%= f.text_area :description} %><br>
+    <%= f.label "Картинка(URL)" %>
+    <%= f.text_field :img_url %>
+  </p>
+ 
+  <p>
+    <%= f.submit "Створити!" %>
+  </p>
+<% end %>

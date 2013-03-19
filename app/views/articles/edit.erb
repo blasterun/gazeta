@@ -1,0 +1,21 @@
+<%= form_for @article, :method => :put, :url => article_path do |f| %>
+ 
+
+  <p>
+    <%= f.label "Тема" %><br>
+    <%= f.text_field :title  %>
+  </p>
+ 
+  <p>
+    <%= f.label "Зміст" %><br>
+    <%= f.cktext_area :body, :ckeditor => {:uiColor => "#AADC6E", :toolbar => "mini"} %><br />
+    <%= f.text_field :tag_list %>
+    <br />
+     <%= f.select :category_id, @categories.map {|r| [r.title, r.id]} %>
+   
+  </p>
+ 
+  <p>
+    <%= f.submit "Зберегти"%>
+  </p>
+<% end %>

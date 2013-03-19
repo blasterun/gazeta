@@ -1,0 +1,10 @@
+<div id="sidebar_block">
+  <strong>Категорії :</strong><br />
+  <% categories.each do |c| %>
+<img width="20px" src="<%= c.img_url %>" /> 
+<strong><%= link_to c.title, category_path(c) %></strong><br />
+<i><%= c.description %></i>
+<hr />
+<% end %>
+<%= link_to "Перейти до списку категорій", categories_path %>
+</div>

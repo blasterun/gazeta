@@ -1,0 +1,13 @@
+адмінка<br />
+
+<%= link_to "Створити категорію", new_category_path %><br />
+
+<%= link_to "Створити статтю", new_article_path %>
+<hr />
+<% @articles.each do |a| %>
+<%= a.title %> | <%= link_to "Знищити", article_path(a), :method=>:delete, :confirm=>"Справді?" %> | <%= link_to "Редагувати", edit_article_path(a) %><br />
+<% end %>
+<hr />
+<% @categories.each do |a| %>
+<%= a.title %> 
+<% end %>

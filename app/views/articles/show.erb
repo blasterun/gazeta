@@ -1,0 +1,27 @@
+<span><%= link_to "Повернутись", articles_path %></span>
+
+<div id="related">
+  <h3>Подібні статті :</h3>
+ <% @article.find_related_tags.each.map do |t| %>
+<%= raw link_to(t.title, category_article_path(t.category, t.id)) %><hr />
+<% end %>
+</div>
+
+<h1><%= @article.title %></h1>
+
+<%= simple_format @article.body %>
+<%= image_tag("tag.png",  :size => "16x16") %> 
+<%=raw @article.tag_list.each.map{|t| link_to(t, tag_articles_path(:tag=>t))}.to_sentence %>.
+<hr />
+
+
+<% @article.comments.each do |comment| %> 
+
+<b><%= comment.title %> </b>
+<p> <%= comment.body %> </p> 
+<%= link_to "Видалити", article_comment_path(@article, comment), :method => :delete, :confirm => "Ви впевнені?" %>
+<hr />
+<% end %>
+
+<%= render  'articles/comment_form', article: @article, comment: @comment %>
+

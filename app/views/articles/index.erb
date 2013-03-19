@@ -1,0 +1,33 @@
+<h2> Всі Статті </h2>
+<span class="add"><%= link_to "додати", new_article_path %></span>
+ <div id="sidebar">
+  <%= render "categories/categories_block", categories: @categories %>
+  <%= render "comments/comments_block", comments: @comments %>
+  <div id="sidebar_block">
+    <strong>Хмаринка тегів :</strong><br />
+    <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+    <%= link_to tag.name, tag_articles_path(:tag=>tag.name), :class => css_class %>
+    <% end %>
+  </div>
+</div>
+<% @articles.each do |a| %>
+
+ 
+ <h2><%= link_to a.title, category_article_path(a.category, a), :method => :get %></h2>
+<%= simple_format a.body %><br />
+
+<%= image_tag("tag.png",  :size => "16x16") %> 
+<%=raw a.tag_list.each.map{|t| link_to(t, tag_articles_path(:tag=>t))}.to_sentence %>.
+
+<br />
+
+<%= link_to a.category.title, category_path(a.category) %>
+
+
+ | <%= link_to "Редагувати", edit_article_path(a) %> | 
+ <%= link_to "Видалити", article_path(a), :method => :delete, :confirm => "Ви впевнені?" %>
+ <hr />
+ <% end %>
+
+ 
+

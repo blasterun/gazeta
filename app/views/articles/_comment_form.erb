@@ -1,0 +1,25 @@
+
+<%= form_for [article, comment] do |f| %>
+
+   <%=raw errors_for comment%>
+   <%-if flash[:error] %>
+      <div style="padding: 5px; background-color: #676790">
+        <%= flash[:error] %>
+      </div>
+    <%end%>
+    <p>
+      <%= f.label "Тема" %><br>
+      <%= f.text_field :title %>
+    </p>
+   
+    <p>
+      <%= f.label "Зміст" %><br>
+      <%= f.text_area :body %>
+    </p>
+   
+    <p>
+      <%= f.submit "Коментувати!" %>
+    </p>
+<% end %>
+
+

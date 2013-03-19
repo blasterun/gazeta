@@ -1,0 +1,23 @@
+<span><%= link_to "Повернутись", articles_path %></span>
+<%= form_for @article do |f| %>
+ <%=raw errors_for @article %>
+  <p>
+    <%= f.label "Заголовок" %><br>
+    <%= f.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= f.label "Зміст" %><br>
+    <%= f.cktext_area :body, :ckeditor => {:uiColor => "#AADC6E", :toolbar => "Full"}%><br>
+    <%= f.label "Теги" %><br>
+    <%= f.text_field :tag_list %>
+  </p>
+
+    <%= f.select :category_id, @categories.map {|r| [r.title, r.id]} %>
+
+
+
+  <p>
+    <%= f.submit "Створити!" %>
+  </p>
+<% end %>

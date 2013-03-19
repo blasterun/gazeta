@@ -1,0 +1,11 @@
+<%= link_to "Повернутись до списку категорій", categories_path %><br />
+<strong><h1><%= @category.title %></strong> </h1><br />
+<img width="150px" src="<%= @category.img_url %>" /><br >
+<%= @category.description %><br >
+Всі новини в цій категорії :
+
+
+<% @category.articles.each do |article| %>
+<h2><%= link_to article.title, category_article_path(@category, article) %></h2>
+<p><%= article.body %></p>
+<% end %> 

@@ -1,0 +1,21 @@
+<%= form_for @category, :method => :put, :url => category_path do |f| %>
+ 
+<%=raw errors_for @category %>
+  <p>
+    <%= f.label "Назва категорії" %><br>
+    <%= f.text_field :title  %>
+  </p>
+ 
+  <p>
+    <%= f.label "Опис категорії" %><br>
+    <%= f.text_area :description %>
+    <br />
+     <%= f.text_field :img_url %>
+     <br />
+   
+  </p>
+ 
+  <p>
+    <%= f.submit "Зберегти"%>
+  </p>
+<% end %>

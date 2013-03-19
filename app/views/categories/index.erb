@@ -1,0 +1,9 @@
+<span class="add"><%= link_to "Добавити Категорію", new_category_path %></span>
+<% @categories.each do |c| %>
+<%= link_to image_tag(c.img_url, :width => '100'), category_path(c) %> <br />
+<strong><%= link_to c.title, category_path(c) %></strong><br />
+<i><%= c.description %></i>
+<%= link_to "Редагувати", edit_category_path(c) %> | 
+ <%= link_to "Видалити", category_path(c), :method => :delete, :confirm => "Ви впевнені?" %>
+<hr />
+<% end %>
